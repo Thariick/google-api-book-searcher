@@ -28,6 +28,13 @@ const App = () => {
     getBookRequest(searchValue);
   }, [searchValue]);
 
+  useEffect(() => {
+    const bookFavo = JSON.parse(localStorage.getItem('react-book-app-favo')
+    );
+    setFavo(bookFavo);
+  }, []);
+  
+
   const saveToLocalStorage = (items) => {
     localStorage.setItem('react-book-app-favo', JSON.stringify(items));
   }
@@ -42,6 +49,7 @@ const App = () => {
   const removeFavoBook = (book) => {
     const newFavoList = favo.filter((favo) => favo.volumeInfo !== book.volumeInfo);
     setFavo(newFavoList);
+    saveToLocalStorage(newFavoList);
   }
 
   return <div className = 'container-fluid book-app'>
