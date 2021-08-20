@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
-import './App.css';
+import './Styles/App.css';
 import BookList from './Components/BookList';
 import SearchBox from './Components/SearchBox';
 import BookListHeading from './Components/BookListHeading';
@@ -17,11 +17,11 @@ const App = () => {
 
 
   const getBookRequest = async (searchValue) => {
-    const url = "https://www.googleapis.com/books/v1/volumes?q="+books
+    const url = `https://www.googleapis.com/books/v1/volumes?q=${searchValue}&maxResults=40&key=AIzaSyAgRE-A2wp7qRzaeee-VW7mbaPRRY1FQBk`
     const response = await fetch (url);
     const responseJson = await response.json();
-    if (responseJson.items) {
-     setBooks(responseJson.items)
+    if (responseJson.data.items) {
+    setBooks(responseJson.data.items)
    }
   };
 
