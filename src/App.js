@@ -9,6 +9,7 @@ import RemoveFavo from './Components/RemoveFavo';
 
 
 
+
 const App = () => {
   const [books, setBooks] = useState([]);
   const [favo, setFavo] = useState ([]);
@@ -16,11 +17,11 @@ const App = () => {
 
 
   const getBookRequest = async (searchValue) => {
-    const url = `https://www.googleapis.com/books/v1/volumes?q=${searchValue}&key=AIzaSyAgRE-A2wp7qRzaeee-VW7mbaPRRY1FQBk&maxResults=40`
+    const url = "https://www.googleapis.com/books/v1/volumes?q="+books
     const response = await fetch (url);
     const responseJson = await response.json();
-    if (responseJson.volumeInfo) {
-     setBooks(responseJson.volumeInfo)
+    if (responseJson.items) {
+     setBooks(responseJson.items)
    }
   };
 
@@ -41,13 +42,13 @@ const App = () => {
 
 
   const addFavoBook = (book) => {
-    const newFavoList = [... favo, book];
+    const newFavoList = [...favo, book];
     setFavo(newFavoList);
     saveToLocalStorage(newFavoList);
   }
 
   const removeFavoBook = (book) => {
-    const newFavoList = favo.filter((favo) => favo.volumeInfo !== book.volumeInfo);
+    const newFavoList = favo.filter((favo) => favo.items !== book.items);
     setFavo(newFavoList);
     saveToLocalStorage(newFavoList);
   }
