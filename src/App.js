@@ -33,7 +33,8 @@ const App = () => {
   }
 
   const removeFavoBook = (book) => {
-    const newFavoList = favo.filter((favo) => favo.volumeInfo !== book.volumeInfo)
+    const newFavoList = favo.filter((favo) => favo.volumeInfo !== book.volumeInfo);
+    setFavo(newFavoList);
   }
 
   return <div className = 'container-fluid book-app'>
