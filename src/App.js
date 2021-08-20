@@ -10,6 +10,7 @@ import AddFavo from './Components/AddFavo';
 
 const App = () => {
   const [books, setBooks] = useState([]);
+  const [favo, setFavo] = useState ([]);
   const [searchValue, setSearchValue] = useState('');
 
 
@@ -25,14 +26,30 @@ const App = () => {
   useEffect(() => {
     getBookRequest(searchValue);
   }, [searchValue]);
+  const addFavoBook = (book) => {
+    const newFavoList = [... favo, book];
+    setFavo(newFavoList);
+  }
 
   return <div className = 'container-fluid book-app'>
             <div className = 'row d-flex align-items-center mt-4 mb-4'>
               <BookListHeading heading = 'Books'/>
-              <SearchBox searchValue = {searchValue} setSearchValue = {setSearchValue}/>
+              <SearchBox searchValue = {searchValue} 
+              setSearchValue = {setSearchValue}/>
             </div>
             <div className = 'row'>
-              <BookList books = {books} favoComponent = {AddFavo}/>
+              <BookList books = {books} 
+              handleFavoClick = {addFavoBook} 
+              favoComponent = {AddFavo}/>
+            </div>
+            <div className = 'row d-flex align-items-center mt-4 mb-4'>
+              <BookListHeading heading = 'Favourites'/>
+              
+            </div>
+            <div className = 'row'>
+              <BookList books = {favo} 
+              handleFavoClick = {addFavoBook} 
+              favoComponent = {AddFavo}/>
             </div>
           </div>
 }

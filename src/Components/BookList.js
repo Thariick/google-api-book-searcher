@@ -7,7 +7,7 @@ const BookList = (props) => {
             {props.books.map ((book, index) => (
             <div className = 'image-container d-flex justify-content-start m-3'>
                 <img src = {book.imageLinks} alt = {book.title}></img>
-                <div className = "overlay d-flex align-items-center justify-content-center"></div>
+                <div onClick = {() => props.handleFavoClick} className = "overlay d-flex align-items-center justify-content-center"></div>
                     <FavoComponent/>
             </div>
             ))}
