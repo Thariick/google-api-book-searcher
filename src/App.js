@@ -5,6 +5,7 @@ import BookList from './Components/BookList';
 import SearchBox from './Components/SearchBox';
 import BookListHeading from './Components/BookListHeading';
 import AddFavo from './Components/AddFavo';
+import RemoveFavo from './Components/RemoveFavo';
 
 
 
@@ -31,6 +32,10 @@ const App = () => {
     setFavo(newFavoList);
   }
 
+  const removeFavoBook = (book) => {
+    const newFavoList = favo.filter((favo) => favo.volumeInfo !== book.volumeInfo)
+  }
+
   return <div className = 'container-fluid book-app'>
             <div className = 'row d-flex align-items-center mt-4 mb-4'>
               <BookListHeading heading = 'Books'/>
@@ -49,7 +54,7 @@ const App = () => {
             <div className = 'row'>
               <BookList books = {favo} 
               handleFavoClick = {addFavoBook} 
-              favoComponent = {AddFavo}/>
+              favoComponent = {RemoveFavo}/>
             </div>
           </div>
 }
