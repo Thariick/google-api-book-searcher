@@ -27,9 +27,16 @@ const App = () => {
   useEffect(() => {
     getBookRequest(searchValue);
   }, [searchValue]);
+
+  const saveToLocalStorage = (items) => {
+    localStorage.setItem('react-book-app-favo', JSON.stringify(items));
+  }
+
+
   const addFavoBook = (book) => {
     const newFavoList = [... favo, book];
     setFavo(newFavoList);
+    saveToLocalStorage(newFavoList);
   }
 
   const removeFavoBook = (book) => {
