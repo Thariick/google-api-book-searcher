@@ -17,7 +17,7 @@ const App = () => {
 
 
   const getBookRequest = async (searchValue) => {
-    const url = `https://www.googleapis.com/books/v1/volumes?q=${searchValue}&maxResults=40&key=AIzaSyAgRE-A2wp7qRzaeee-VW7mbaPRRY1FQBk`
+    const url = `https://www.googleapis.com/books/v1/volumes`
     const response = await fetch (url);
     const responseJson = await response.json();
     if (responseJson.data.items) {
