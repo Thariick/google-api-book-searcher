@@ -4,6 +4,7 @@ import './App.css';
 import BookList from './Components/BookList';
 import SearchBox from './Components/SearchBox';
 import BookListHeading from './Components/BookListHeading';
+import AddFavo from './Components/AddFavo';
 
 
 
@@ -31,7 +32,7 @@ const App = () => {
               <SearchBox searchValue = {searchValue} setSearchValue = {setSearchValue}/>
             </div>
             <div className = 'row'>
-              <BookList books = {books}/>
+              <BookList books = {books} favoComponent = {AddFavo}/>
             </div>
           </div>
 }
